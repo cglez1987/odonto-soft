@@ -1,0 +1,34 @@
+<h1 mat-dialog-title><strong>Nueva Cita</strong></h1>
+<div mat-dialog-content>
+    <form [formGroup]="citaForm">
+        <div>
+            <mat-form-field appearance="standard">
+                <mat-label>Paciente</mat-label>
+                <input matInput formControlName="paciente" required>
+                <mat-error *ngIf="f.paciente.errors?.required">Paciente es obligatorio</mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="standard">
+                <mat-label>Inicia</mat-label>
+                <input matInput [matDatepicker]="dateStart" formControlName="start">
+                <mat-datepicker-toggle matSuffix [for]="dateStart"></mat-datepicker-toggle>
+                <mat-datepicker #dateStart></mat-datepicker>
+                <mat-error *ngIf="f.start.errors?.required">La fecha de inicio es obligatoria</mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="standard">
+                <mat-label>Finaliza</mat-label>
+                <input matInput [matDatepicker]="dateEnd" formControlName="end">
+                <mat-datepicker-toggle matSuffix [for]="dateEnd"></mat-datepicker-toggle>
+                <mat-datepicker #dateEnd></mat-datepicker>
+                <mat-error *ngIf="f.end.errors?.required">La fecha de fin es obligatoria</mat-error>
+            </mat-form-field>
+        </div>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button color="primary" cdkFocusInitial (click)="saveCita()" [disabled]="!citaForm.valid">OK</button>
+    <button mat-button color="warn" (click)="onNoClick()">Cancelar</button>
+</div>

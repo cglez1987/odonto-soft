@@ -1,0 +1,17 @@
+<section fxLayout="row wrap" fxLayoutAlign="center center">
+  <form [formGroup]="especialidadForm" (ngSubmit)="addEspecialidad()">
+    <mat-card>
+      <mat-card-title>Crear nueva especialidad</mat-card-title>
+      <mat-card-content>
+        <mat-form-field>
+          <input matInput type="text" placeholder="Especialidad" formControlName="name" id="name">
+          <mat-error *ngIf="f.name.errors?.required">Nombre de especialidad es obligatorio</mat-error>
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" [disabled]="!especialidadForm.valid">Crear</button>
+        <button type="button" mat-raised-button color="warn" (click)="cancel()">Cancelar</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</section>

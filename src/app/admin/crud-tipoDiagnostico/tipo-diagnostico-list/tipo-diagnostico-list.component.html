@@ -1,0 +1,33 @@
+<h3>Lista de Especialidades</h3>
+<br />
+<a [routerLink]="[ '/admin/tipoDiagnostico/new']" class="text-success">Añadir Tipo de Diagnostico</a>
+<br />
+<div class="container">
+  <table class="table" *ngIf="isTipoDiagnosticosEmpty()">
+    <thead>
+      <tr class="row">
+        <th class="col">#</th>
+        <th class="col">Name</th>
+        <th class="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tipoDiagnostico of tipoDiagnosticos; let i = index" class="row">
+        <td class="col">{{i + 1}}</td>
+        <td class="col">{{tipoDiagnostico.name}}</td>
+        <td class="col">
+          <a [routerLink]="[ '/admin/tipoDiagnostico/edit/', tipoDiagnostico.id ]">
+            <button mat-icon-button>
+              <mat-icon>edit</mat-icon>
+            </button>
+          </a>
+          <a (click)="deleteTipoDiagnostico(tipoDiagnostico.id)">
+            <button mat-icon-button>
+              <mat-icon>delete</mat-icon>
+            </button>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

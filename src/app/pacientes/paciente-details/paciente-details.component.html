@@ -1,0 +1,78 @@
+<h1 mat-dialog-title><strong> Detalles del paciente</strong></h1>
+<div mat-dialog-content>
+    <div class="row">
+        <div class="col-md-5">
+            <strong>Nombre: </strong>
+        </div>
+        <div class="col-md-7">
+            <label>{{data.patient.fullname}}</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5">
+            <strong>Cédula: </strong>
+        </div>
+        <div class="col-md-7">
+            <label>{{data.patient.ci}}</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5">
+            <strong>Edad: </strong>
+        </div>
+        <div class="col-md-7">
+            <label>{{data.patient.age}}</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5">
+            <strong>Fecha de Nacimiento: </strong>
+        </div>
+        <div class="col-md-7">
+            <label>{{data.patient.birthday | date: 'dd/MM/yyyy'}}</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5">
+            <strong>Estado civil: </strong>
+        </div>
+        <div class="col-md-7">
+            <label>{{data.patient.marital_status}}</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5">
+            <strong>Sexo: </strong>
+        </div>
+        <div class="col-md-7">
+            <label>{{data.patient.gender}}</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5">
+            <strong>Profesión: </strong>
+        </div>
+        <div class="col-md-7">
+            <label>{{data.patient.profession}}</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5">
+            <strong>Teléfono: </strong>
+        </div>
+        <div class="col-md-7">
+            <label>{{data.patient.phone}}</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5">
+            <strong>Dirección: </strong>
+        </div>
+        <div class="col-md-7">
+            <label>{{data.patient.address}}</label>
+        </div>
+    </div>
+</div>
+<div mat-dialog-actions>
+    <button mat-button cdkFocusInitial (click)="close()">Cerrar</button>
+</div>

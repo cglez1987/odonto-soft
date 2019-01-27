@@ -1,0 +1,12 @@
+#table-pacientes{
+    width: 100%;
+}
+
+.btn-create-patient{
+    float: right;
+}
+
+.a-actions{
+    margin-right: 10px;
+    
+}

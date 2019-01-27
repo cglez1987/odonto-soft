@@ -1,0 +1,89 @@
+<form [formGroup]="patientForm" (ngSubmit)="addPatient()">
+
+    <div class="row">
+        <div class="col-md-6">
+            <div>
+                <mat-form-field appearance="standard">
+                    <mat-label>Nombre y Apellidos</mat-label>
+                    <input matInput formControlName="fullname" required>
+                    <mat-error *ngIf="f.fullname.errors?.required">Nombre es obligatorio</mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="standard">
+                    <mat-label>Cédula</mat-label>
+                    <input matInput formControlName="ci" required>
+                    <mat-error *ngIf="f.ci.errors?.required">Cédula es obligatorio</mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="standard">
+                    <mat-label>Fecha Nacimiento</mat-label>
+                    <input matInput [matDatepicker]="dp3" formControlName="birthday">
+                    <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+                    <mat-datepicker #dp3></mat-datepicker>
+                    <mat-error *ngIf="f.birthday.errors?.required">Fecha de Nacimiento es obligatorio</mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="standard">
+                    <mat-label>Profesión</mat-label>
+                    <input matInput formControlName="profession" required>
+                    <mat-error *ngIf="f.profession.errors?.required">Profesión es obligatorio</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div>
+            <div>
+                <mat-form-field appearance="standard">
+                    <mat-label>Teléfono</mat-label>
+                    <input type="text" matInput formControlName="phone" required>
+                    <mat-error *ngIf="f.phone.errors?.required">Teléfono es obligatorio</mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="standard">
+                    <mat-label>Edad</mat-label>
+                    <input type="number" matInput formControlName="age" required>
+                    <mat-error *ngIf="f.age.errors?.required">Edad es obligatorio</mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="standard">
+                    <mat-label>Sexo</mat-label>
+                    <mat-select formControlName="gender" required>
+                        <mat-option *ngFor="let gender of genders" [value]="gender">
+                            {{gender}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="f.gender.errors?.required">Sexo es obligatorio</mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="standard">
+                    <mat-label>Estado Civil</mat-label>
+                    <mat-select formControlName="marital_status" required>
+                        <mat-option *ngFor="let marital of marital_status" [value]="marital">
+                            {{marital}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="f.marital_status.errors?.required">Estado Civil es obligatorio</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <mat-form-field appearance="standard">
+                <mat-label>Dirección</mat-label>
+                <textarea matInput formControlName="address" required></textarea>
+                <mat-error *ngIf="f.address.errors?.required">Dirección es obligatorio</mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <div>
+        <button mat-raised-button>Guardar</button>
+        <a routerLink="/pacientes" class="btn btn-link">Cancelar</a>
+    </div>
+
+</form>

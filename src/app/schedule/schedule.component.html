@@ -1,0 +1,84 @@
+<div class="row schedule-btn">
+  <div class="col-md-4">
+    <button class="btn btn-primary" (click)="openModalAddCita()">
+      Nueva Cita
+    </button>
+  </div>
+  <div class="col-md-4 text-center">
+    <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+  </div>
+  <div class="col-md-4 text-center">
+    <div class="row">
+      <div class="btn btn-light">
+        <mat-icon mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="activeDayIsOpen = false">keyboard_arrow_left</mat-icon>
+      </div>
+      <div class="btn btn-light">
+        <strong mwlCalendarToday [(viewDate)]="viewDate">Today</strong>
+      </div>
+      <div class="btn btn-light">
+        <mat-icon mwlCalendarNextView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="activeDayIsOpen = false">keyboard_arrow_right</mat-icon>
+      </div>
+    </div>
+
+
+    <!-- <div class="btn-group">
+      <div class="btn btn-primary" (click)="view = CalendarView.Month" [class.active]="view === CalendarView.Month">
+        Month
+      </div>
+      <div class="btn btn-primary" (click)="view = CalendarView.Week" [class.active]="view === CalendarView.Week">
+        Week
+      </div>
+      <div class="btn btn-primary" (click)="view = CalendarView.Day" [class.active]="view === CalendarView.Day">
+        Day
+      </div>
+    </div>-->
+  </div>
+</div>
+<br>
+<div [ngSwitch]="view" class="schedule">
+  <mwl-calendar-month-view *ngSwitchCase="CalendarView.Month" [viewDate]="viewDate" [events]="citas" [refresh]="refresh"
+    [activeDayIsOpen]="activeDayIsOpen" (dayClicked)="dayClicked($event.day)" (eventTimesChanged)="eventTimesChanged($event)">
+  </mwl-calendar-month-view>
+  <!--<mwl-calendar-week-view *ngSwitchCase="CalendarView.Week" [viewDate]="viewDate" [events]="citas" [refresh]="refresh"
+    (eventTimesChanged)="eventTimesChanged($event)">
+  </mwl-calendar-week-view>
+  <mwl-calendar-day-view *ngSwitchCase="CalendarView.Day" [viewDate]="viewDate" [events]="citas" [refresh]="refresh"
+    (eventTimesChanged)="eventTimesChanged($event)">
+  </mwl-calendar-day-view>-->
+</div>
+
+<!--<table class="table table-bordered">
+
+  <thead>
+    <tr>
+      <th>Paciente</th>
+      <th>Comienza</th>
+      <th>Termina</th>
+      <th>Eliminar</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let cita of citas; let index = index">
+      <td>
+        <input type="text" class="form-control" [(ngModel)]="cita.title" (keyup)="refresh.next()">
+      </td>
+      <td>
+        <input class="form-control" type="text" mwlFlatpickr [(ngModel)]="cita.start" (ngModelChange)="refresh.next()"
+          [altInput]="true" [convertModelValue]="true" [enableTime]="true" dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i"
+          placeholder="Not set">
+      </td>
+      <td>
+        <input class="form-control" type="text" mwlFlatpickr [(ngModel)]="cita.end" (ngModelChange)="refresh.next()"
+          [altInput]="true" [convertModelValue]="true" [enableTime]="true" dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i"
+          placeholder="Not set">
+      </td>
+      <td>
+        <button class="btn btn-danger" (click)="citas.splice(index, 1); refresh.next()">
+          Cancelar
+        </button>
+      </td>
+    </tr>
+  </tbody>
+
+</table>-->

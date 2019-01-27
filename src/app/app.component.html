@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg bg-dark" *ngIf="currentUser">
+    <div class="collapse navbar-collapse">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="[ '/home' ]"><mat-icon>home</mat-icon></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="[ '/pacientes' ]">Pacientes</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                    aria-expanded="false">Configuraciones</a>
+                <div class="dropdown-menu">
+                    <a class="nav-item nav-link" [routerLink]="[ 'admin/especialidades' ]">Especialidades</a>
+                    <a class="nav-item nav-link" [routerLink]="[ 'admin/tipoTratamiento' ]">Tratamientos</a>
+                    <a class="nav-item nav-link" [routerLink]="[ 'admin/tipoDiagnostico' ]">Diagnósticos</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="nav-item nav-link" [routerLink]="[ '/home' ]">Doctores</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="nav navbar-right">
+        <a class="nav-item nav-link" routerLink="/" (click)="logout()">Logout</a>
+    </div>
+</nav>
+
+<div class="container">
+    <alert></alert>
+    <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,32 @@
+<h4>Historia Clínica del Paciente</h4>
+<br>
+<mat-tab-group dynamicHeight animationDuration="0ms">
+  <mat-tab label="Antecedentes de Salud">
+    <ng-template matTabContent>
+      <div class="example-small-box mat-elevation-z4">
+        <app-health-history [paciente]="patient"></app-health-history>
+      </div>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Odontograma">
+    <ng-template matTabContent>
+      <div class="row">
+        <img src="../../assets/odontograma.jpg">
+      </div>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Inspección Bucal">
+    <ng-template matTabContent>
+      <div class="example-large-box mat-elevation-z4">
+        Large content
+      </div>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Presupuestos">
+    <ng-template matTabContent>
+      <div class="example-large-box mat-elevation-z4">
+        Large content
+      </div>
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>

@@ -142,7 +142,7 @@ export class ScheduleComponent implements OnInit {
     const dialogRef = this.dialog.open(CitaNewComponent, {
       width: '25%',
       height: '400px',
-      data: { action: "new" }
+      data: { action: "new", title: "Nueva Cita" }
     });
     dialogRef.afterClosed().subscribe(result => {
       this.loadCitas();
@@ -154,7 +154,7 @@ export class ScheduleComponent implements OnInit {
     const dialogRef = this.dialog.open(CitaNewComponent, {
       width: '25%',
       height: '400px',
-      data: { action: "edit", cita: cita }
+      data: { action: "edit", cita: cita, title: "Editar Cita" }
     });
     dialogRef.afterClosed().subscribe(result => {
       this.loadCitas();
@@ -204,6 +204,7 @@ export class CitaNewComponent {
   citaForm: FormGroup;
   formBuilder = new FormBuilder();
   submitter = false;
+  title = this.data.title;
 
   constructor(public dialogRef: MatDialogRef<CitaNewComponent>,
     private citaService: CitaService,

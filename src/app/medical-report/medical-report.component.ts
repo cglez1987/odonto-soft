@@ -14,7 +14,7 @@ export class MedicalReportComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.patient = this.patient = this.activatedRoute.snapshot.data['paciente'];
+    this.patient = this.activatedRoute.snapshot.data['paciente'];
   }
 
 }

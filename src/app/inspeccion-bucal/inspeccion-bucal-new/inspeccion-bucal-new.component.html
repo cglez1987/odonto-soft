@@ -1,0 +1,231 @@
+<br>
+<form [formGroup]="inspeccionBucalForm">
+  <p-fieldset legend="Diagnósticos" id="legend-diagnosticos">
+    <div>
+      <div class="div-button-add">
+        <button mat-icon-button (click)="addFormDiagnostico()">
+          <mat-icon class="mat-18">add</mat-icon>
+        </button>
+      </div>
+      <!--<div class="row" *ngIf="diagnosticosExists()">
+        <div class="col-md-4">
+          <label>Diagnóstico</label>
+        </div>
+        <div class="col-md-1">
+          <label>Diente</label>
+        </div>
+        <div class="col-md-6">
+          <label>Descripción</label>
+        </div>
+        <div class="col-md-1">
+          <label></label>
+        </div>
+      </div>-->
+      <div formArrayName="list_diagnostico">
+        <div *ngFor="let item of diagnosticosForm.controls; let i = index;" [formGroupName]="i">
+          <div class="row">
+            <div class="col-md-4">
+              <!--<select formControlName="name" class="form-control"
+                [ngClass]="{ 'is-invalid':  diagnosticosForm.at(i).get('name').errors && (diagnosticosForm.at(i).get('name').dirty || submitted) }">
+                <option [value]="toJSON(tipo_diagnostico)" *ngFor="let tipo_diagnostico of tipo_diagnosticos">
+                  {{tipo_diagnostico.name}}</option>
+              </select>
+              <div
+                *ngIf="(diagnosticosForm.at(i).get('name').dirty || diagnosticosForm.at(i).get('name').touched || submitted) && diagnosticosForm.at(i).get('name').errors"
+                class="invalid-feedback">
+                <div *ngIf="diagnosticosForm.at(i).get('name').errors.required">Tipo de Diagnóstico es obligatorio</div>
+              </div>-->
+              <mat-form-field appearance="standard">
+                <mat-label>Diagnóstico</mat-label>
+                <mat-select formControlName="name">
+                  <mat-option *ngFor="let tipo_diagnostico of tipo_diagnosticos" [value]="toJSON(tipo_diagnostico)">
+                    {{tipo_diagnostico.name}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="diagnosticosForm.at(i).get('name').errors?.required">Diagnóstico es
+                  obligatorio
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-md-2">
+              <!--<select formControlName="tooth" class="form-control"
+                [ngClass]="{ 'is-invalid':  diagnosticosForm.at(i).get('tooth').errors && (diagnosticosForm.at(i).get('tooth').dirty || submitted) }">
+                <option [value]="diente" *ngFor="let diente of dientes">{{diente}}</option>
+              </select>
+              <div
+                *ngIf="(diagnosticosForm.at(i).get('tooth').dirty || diagnosticosForm.at(i).get('tooth').touched || submitted) && diagnosticosForm.at(i).get('tooth').errors"
+                class="invalid-feedback">
+                <div *ngIf="diagnosticosForm.at(i).get('tooth').errors.required">Diente es obligatorio</div>
+              </div>-->
+              <mat-form-field appearance="standard">
+                <mat-label>Diente</mat-label>
+                <mat-select formControlName="tooth" required>
+                  <mat-option *ngFor="let diente of dientes" [value]="diente">
+                    {{diente}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="diagnosticosForm.at(i).get('tooth').errors?.required">Diente es
+                  obligatorio
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-md-5">
+              <!-- <input formControlName="description" class="form-control"
+                [ngClass]="{ 'is-invalid':  diagnosticosForm.at(i).get('description').errors && (diagnosticosForm.at(i).get('description').dirty || submitted) }">
+              <div
+                *ngIf="(diagnosticosForm.at(i).get('description').dirty || diagnosticosForm.at(i).get('description').touched || submitted) && diagnosticosForm.at(i).get('description').errors"
+                class="invalid-feedback">
+                <div *ngIf="diagnosticosForm.at(i).get('description').errors.required">Descripción es obligatorio</div>
+              </div>-->
+              <mat-form-field appearance="standard">
+                <mat-label>Descripción</mat-label>
+                <input matInput formControlName="description" required>
+                <mat-error *ngIf="diagnosticosForm.at(i).get('description').errors?.required">Descripción es obligatorio
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-md-1">
+              <a (click)="deleteFormDiagnostico(i)">
+                <button mat-icon-button>
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </a>
+            </div>
+          </div>
+          <br>
+        </div>
+      </div>
+    </div>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Observaciones</mat-label>
+        <textarea matInput formControlName="observaciones_diagnostico"></textarea>
+      </mat-form-field>
+    </div>
+  </p-fieldset>
+  <br>
+  <p-fieldset legend="Tratamientos a realizar" id="legend-tratamientos">
+    <div>
+      <div class="div-button-add">
+        <button mat-icon-button (click)="addFormTratamiento()">
+          <mat-icon class="mat-18">add</mat-icon>
+        </button>
+      </div>
+      <!-- <div class="row" *ngIf="tratamientosExists()">
+        <div class="col-md-3">
+          <label>Especialidad</label>
+        </div>
+        <div class="col-md-3">
+          <label>Tratamiento</label>
+        </div>
+        <div class="col-md-3">
+          <label>Descripción</label>
+        </div>
+        <div class="col-md-2">
+          <label>Costo</label>
+        </div>
+      </div>-->
+      <div formArrayName="list_tratamiento">
+        <div *ngFor="let item of tratamientosForm.controls; let i = index;" [formGroupName]="i">
+          <div class="row">
+            <div class="col-md-3">
+              <!-- <select formControlName="especialidad" class="form-control"
+                [ngClass]="{ 'is-invalid':  tratamientosForm.at(i).get('especialidad').errors && (tratamientosForm.at(i).get('especialidad').dirty || submitted) }">
+                <option [value]="toJSON(especialidad)" *ngFor="let especialidad of especialidades">{{especialidad.name}}
+                </option>
+              </select>
+              <div
+                *ngIf="(tratamientosForm.at(i).get('especialidad').dirty || tratamientosForm.at(i).get('especialidad').touched || submitted) && tratamientosForm.at(i).get('especialidad').errors"
+                class="invalid-feedback">
+                <div *ngIf="tratamientosForm.at(i).get('especialidad').errors.required">Especialidad es obligatorio
+                </div>
+              </div>-->
+              <mat-form-field appearance="standard">
+                <mat-label>Especialidad</mat-label>
+                <mat-select formControlName="especialidad" required (selectionChange)="filterTratamientoXEspecialidad(i)">
+                  <mat-option *ngFor="let especialidad of especialidades" [value]="toJSON(especialidad)">
+                    {{especialidad.name}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="tratamientosForm.at(i).get('especialidad').errors?.required">Especialidad es
+                  obligatorio
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-md-3">
+              <!--<select formControlName="tipo_tratamiento" class="form-control" (change)="getCosto(i)"
+                [ngClass]="{ 'is-invalid':  tratamientosForm.at(i).get('tipo_tratamiento').errors && (tratamientosForm.at(i).get('tipo_tratamiento').dirty || submitted) }">
+                <option [value]="toJSON(obj_trata)" *ngFor="let obj_trata of tipos_tratamientos">{{obj_trata.name}}
+                </option>
+              </select>
+              <div
+                *ngIf="(tratamientosForm.at(i).get('tipo_tratamiento').dirty || tratamientosForm.at(i).get('tipo_tratamiento').touched || submitted) && tratamientosForm.at(i).get('tipo_tratamiento').errors"
+                class="invalid-feedback">
+                <div *ngIf="tratamientosForm.at(i).get('tipo_tratamiento').errors.required">Tratamiento es obligatorio
+                </div>
+              </div>-->
+              <mat-form-field appearance="standard">
+                <mat-label>Tratamiento</mat-label>
+                <mat-select formControlName="tipo_tratamiento" required (selectionChange)="getCosto(i)">
+                  <mat-option *ngFor="let obj_trata of tipos_tratamientos_xEspecialidad.get(i)" [value]="toJSON(obj_trata)">
+                    {{obj_trata.name}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="tratamientosForm.at(i).get('tipo_tratamiento').errors?.required">Tratamiento es
+                  obligatorio
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-md-3">
+              <!--<input formControlName="description" class="form-control"
+                [ngClass]="{ 'is-invalid':  tratamientosForm.at(i).get('description').errors && (tratamientosForm.at(i).get('description').dirty || submitted) }">
+              <div
+                *ngIf="(tratamientosForm.at(i).get('description').dirty || tratamientosForm.at(i).get('description').touched || submitted) && tratamientosForm.at(i).get('description').errors"
+                class="invalid-feedback">
+                <div *ngIf="tratamientosForm.at(i).get('description').errors.required">Descripción es obligatorio</div>
+              </div>-->
+              <mat-form-field appearance="standard">
+                <mat-label>Descripción</mat-label>
+                <input matInput formControlName="description" required>
+                <mat-error *ngIf="tratamientosForm.at(i).get('description').errors?.required">Descripción es obligatorio
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-md-2">
+              <!--<input formControlName="costo" class="form-control" id="txtMonto"
+                [ngClass]="{ 'is-invalid':  tratamientosForm.at(i).get('costo').errors && (tratamientosForm.at(i).get('costo').dirty || submitted) }">
+              <div
+                *ngIf="(tratamientosForm.at(i).get('costo').dirty || tratamientosForm.at(i).get('costo').touched || submitted) && tratamientosForm.at(i).get('costo').errors"
+                class="invalid-feedback">
+                <div *ngIf="tratamientosForm.at(i).get('costo').errors.required">Costo es obligatorio</div>
+                <div *ngIf="tratamientosForm.at(i).get('costo').errors.pattern">Solo se aceptan números</div>
+              </div>-->
+              <mat-form-field appearance="standard">
+                <mat-label>Costo</mat-label>
+                <input id="txtMonto" type="number" matInput formControlName="costo" required>
+                <mat-error *ngIf="tratamientosForm.at(i).get('costo').errors?.required">Costo es obligatorio</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-md-1">
+              <button mat-icon-button (click)="deleteFormTratamiento(i)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </div>
+          <br>
+        </div>
+      </div>
+    </div>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Observaciones</mat-label>
+        <textarea matInput formControlName="observaciones_tratamiento"></textarea>
+      </mat-form-field>
+    </div>
+  </p-fieldset>
+  <br>
+  <div>
+    <button mat-raised-button color="primary" (click)="saveInspeccionBucal()"
+      [disabled]="!inspeccionBucalForm.valid">Guardar</button>
+  </div>
+</form>

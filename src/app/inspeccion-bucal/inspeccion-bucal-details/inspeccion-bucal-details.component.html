@@ -1,0 +1,103 @@
+<div class="main-div-details">
+    <div class="row row-details div-center">
+        <div class="col-md-6">
+            <mat-label><strong>Fecha de Realización: </strong></mat-label>
+            {{inspeccionBucal.fechaRealizacion | date:'dd-MMMM-yyyy'}}
+        </div>
+        <div class="col-md-6">
+            <mat-label><strong>Costo Total: </strong></mat-label>
+            {{inspeccionBucal.costoTotal | currency: 'PYG'}}
+        </div>
+    </div>
+    <div class="row row-details div-center">
+        <mat-label><strong>Diagnósticos</strong></mat-label>
+    </div>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <table id="table-diagnosticos" mat-table [dataSource]="dataSourceDiagnosticos" class="mat-elevation-z4">
+                <ng-container matColumnDef="diagnostico">
+                    <th mat-header-cell *matHeaderCellDef>Diagnostico</th>
+                    <td mat-cell *matCellDef="let diagnostico">
+                        {{parseEspecialidad(diagnostico.name)}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="diente">
+                    <th mat-header-cell *matHeaderCellDef>Diente</th>
+                    <td mat-cell *matCellDef="let diagnostico">{{diagnostico.tooth}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="descripcion">
+                    <th mat-header-cell *matHeaderCellDef>Descripción</th>
+                    <td mat-cell *matCellDef="let diagnostico">{{diagnostico.description}}</td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsDiagnosticos"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumnsDiagnosticos;"></tr>
+            </table>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <div class="row row-details" *ngIf="inspeccionBucal.observaciones_diagnostico">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <p-fieldset legend="Observaciones / Diagnósticos">
+                {{inspeccionBucal.observaciones_diagnostico}}
+            </p-fieldset>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <br>
+    <div class="row row-details div-center">
+        <mat-label><strong>Tratamientos</strong></mat-label>
+    </div>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <table id="table-tratamientos" mat-table [dataSource]="dataSourceTratamientos" class="mat-elevation-z4">
+                <ng-container matColumnDef="especialidad">
+                    <th mat-header-cell *matHeaderCellDef>Especialidad</th>
+                    <td mat-cell *matCellDef="let diagnostico">
+                        {{parseEspecialidad(diagnostico.especialidad)}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="tratamiento">
+                    <th mat-header-cell *matHeaderCellDef>Tratamiento</th>
+                    <td mat-cell *matCellDef="let diagnostico">{{parseTratamiento(diagnostico.tipo_tratamiento)}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="descripcion">
+                    <th mat-header-cell *matHeaderCellDef>Descripcion</th>
+                    <td mat-cell *matCellDef="let diagnostico">{{diagnostico.description}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="costo">
+                    <th mat-header-cell *matHeaderCellDef>Costo</th>
+                    <td mat-cell *matCellDef="let diagnostico">{{diagnostico.costo | currency: 'PYG'}}</td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsTratamientos"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumnsTratamientos;"></tr>
+            </table>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <div class="row row-details" *ngIf="inspeccionBucal.observaciones_tratamiento">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <p-fieldset legend="Observaciones / Tratamientos">
+                {{inspeccionBucal.observaciones_tratamiento}}
+            </p-fieldset>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <div class="row row-details">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <button mat-raised-button color="warn" (click)="closeDetails()">Cerrar</button>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>

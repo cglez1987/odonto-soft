@@ -7,6 +7,7 @@ import { Especialidad } from 'src/app/_models/especialidad';
 import { TipoTratamientoService } from 'src/app/_services/tipo-tratamiento.service';
 import { EspecialidadService } from 'src/app/_services/especialidad.service';
 import { AlertService } from 'src/app/_services/alert.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-tipo-tratamiento-edit',
@@ -25,7 +26,8 @@ export class TipoTratamientoEditComponent implements OnInit {
     private especialidadService: EspecialidadService,
     private alertService: AlertService,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private location: Location) { }
 
   ngOnInit() {
     this.tipoTratamiento = this.route.snapshot.data['tipoTratamiento'];
@@ -33,7 +35,7 @@ export class TipoTratamientoEditComponent implements OnInit {
     this.tipoTratamientoForm = this.formBuilder.group({
       especialidad: [this.tipoTratamiento.especialidad, Validators.required],
       name: [this.tipoTratamiento.name, Validators.required],
-      cost: [this.tipoTratamiento.cost, Validators.required]
+      cost: [this.tipoTratamiento.cost, [Validators.required, Validators.pattern('[0-9]*')]]
 
     })
   }
@@ -47,7 +49,7 @@ export class TipoTratamientoEditComponent implements OnInit {
     }
     this.tipoTratamientoService.update(this.tipoTratamientoForm.value, this.tipoTratamiento.id).subscribe(
       data => {
-        this.alertService.success("Tipo de Tratamiento guardado", true);
+        this.alertService.success("Tipo de Tratamiento actualizado correctamente", true);
         this.router.navigate(['admin/tipoTratamiento']);
       }, error => {
         this.alertService.error("Hubo un error al guardar el Tipo de Tratamiento");
@@ -62,5 +64,10 @@ export class TipoTratamientoEditComponent implements OnInit {
         console.log(error);
       })
   }
+
+  cancel() {
+    this.location.back()
+  }
+
 
 }

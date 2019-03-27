@@ -1,0 +1,19 @@
+#table-diagnosticos{
+    width: 100%;
+}
+
+#table-tratamientos{
+    width: 100%;
+}
+
+mat-label{
+    width: 100%;
+}
+
+.row-details{
+    padding-top: 25px;
+}
+
+.div-center{
+    text-align: center;
+}

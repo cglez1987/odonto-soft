@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { AlertService } from 'src/app/_services/alert.service';
 import { EspecialidadService } from 'src/app/_services/especialidad.service';
-import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-especialidad-new',
@@ -37,7 +38,7 @@ export class EspecialidadNewComponent implements OnInit {
     }
     this.especService.save(this.especialidadForm.value).subscribe(
       data => {
-        this.alertService.success("Especialidad guardada", true);
+        this.alertService.success("Especialidad guardada satisfactoriamente", true);
         this.router.navigate(['admin/especialidades']);
       }, error => {
         this.alertService.error("Hubo un error al guardar la especialidad");

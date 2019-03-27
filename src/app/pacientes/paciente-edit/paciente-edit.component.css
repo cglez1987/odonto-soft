@@ -1,0 +1,15 @@
+textarea {
+    width: 100%;
+}
+
+.mat-form-field{
+    display: block;
+}
+
+mat-card-title{
+    text-align: center;
+}
+
+.div_new{
+    padding-top: 2%;
+}

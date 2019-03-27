@@ -1,0 +1,24 @@
+.mat-radio-button {
+    margin-left: 16px;
+  }
+
+  .mat-radio-inner-circle{
+    background-color: black;
+  }
+
+  .radioCarlos .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+    border-color: black;
+}
+
+  .mat-form-field{
+    display: block;
+  }
+
+  #obs-innpeccionBucal{
+    padding-top: 50px;
+  }
+
+  .elements_bucales{
+    display: flex;
+    align-items: center;
+  }

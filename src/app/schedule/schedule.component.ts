@@ -140,7 +140,7 @@ export class ScheduleComponent implements OnInit {
 
   openModalAddCita() {
     const dialogRef = this.dialog.open(CitaNewComponent, {
-      width: '20%',
+      width: '25%',
       height: '400px',
       data: { action: "new" }
     });
@@ -152,7 +152,7 @@ export class ScheduleComponent implements OnInit {
 
   openModalEditCita(cita: Cita) {
     const dialogRef = this.dialog.open(CitaNewComponent, {
-      width: '20%',
+      width: '25%',
       height: '400px',
       data: { action: "edit", cita: cita }
     });
@@ -183,6 +183,18 @@ export class ScheduleComponent implements OnInit {
 @Component({
   selector: 'cita-new',
   templateUrl: 'cita-new.html',
+  styles: [`
+  .mat-form-field{
+    width: 100%;
+  }
+  .mat-dialog-actions {
+    display: block;
+    text-align: center;
+  }
+  .mat-dialog-title{
+    text-align: center;
+  }
+`],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'es-ES' },
   { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
   { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS }]
@@ -192,15 +204,6 @@ export class CitaNewComponent {
   citaForm: FormGroup;
   formBuilder = new FormBuilder();
   submitter = false;
-
-
-  /* ngOnInit() {
-     this.citaForm = this.formBuilder.group({
-       paciente: ['', Validators.required],
-       start: [new Date(), Validators.required],
-       end: [new Date(), Validators.required]
-     })
-   }*/
 
   constructor(public dialogRef: MatDialogRef<CitaNewComponent>,
     private citaService: CitaService,
@@ -276,7 +279,8 @@ export class CitaNewComponent {
   }
   div{
     align-items: center;
-    display: flex;
+    display: block;
+    text-align: center;
   }
 `]
 })

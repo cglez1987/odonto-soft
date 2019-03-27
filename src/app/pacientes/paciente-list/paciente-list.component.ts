@@ -4,6 +4,7 @@ import { MatTableDataSource, MatPaginator, MAT_DIALOG_DATA, MatDialogRef, MatDia
 import { PatientService } from 'src/app/_services/patient.service';
 import { Patient } from 'src/app/_models/patient';
 import { PacienteDetailsComponent } from '../paciente-details/paciente-details.component';
+import { ConfigurationService } from 'src/app/_services/configuration.service';
 
 @Component({
   selector: 'app-paciente-list',
@@ -89,7 +90,8 @@ export class PacienteListComponent implements OnInit, AfterViewInit {
   }
   div{
     align-items: center;
-    display: flex;
+    display: block;
+    text-align: center;
   }
 `]
 })

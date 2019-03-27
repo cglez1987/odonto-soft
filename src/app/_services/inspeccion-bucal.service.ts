@@ -32,4 +32,12 @@ export class InspeccionBucalService {
     return this.http.delete(this.configService.getApiURL() + '/inspeccionBucales/' + id);
   }
 
+  getAllByPatientId(patientId: string) {
+    return this.http.get<InspeccionBucal[]>(this.configService.getApiURL() + '/inspeccionBucales/patientId/' + patientId);
+  }
+
+  getLastInpeccionBucal(patientId: string) {
+    return this.http.get<InspeccionBucal>(this.configService.getApiURL() + '/inspeccionBucales/last/' + patientId);
+  }
+
 }

@@ -1,0 +1,66 @@
+<div class="div_new">
+  <div class="container">
+    <section fxLayout="row wrap" fxLayoutAlign="center center">
+      <form [formGroup]="paymentForm">
+        <mat-card>
+          <mat-card-title>Nuevo pago</mat-card-title>
+          <mat-card-content>
+            <div>
+              <mat-form-field>
+                <mat-select formControlName="tratamiento" placeholder="Tratamiento a pagar" required>
+                  <mat-optgroup [label]="'Inspección bucal del ' + (lastInspeccionBucal.fechaRealizacion | date)">
+                    <mat-option *ngFor="let tratamiento of lastInspeccionBucal.list_tratamiento" [value]="toJSON(tratamiento)">
+                      {{formatTratamientoLabel(tratamiento.tipo_tratamiento)}}
+                    </mat-option>
+                  </mat-optgroup>
+                </mat-select>
+                <mat-error *ngIf="f.tratamiento.errors?.required">Tratamiento a pagar es obligatorio</mat-error>
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field>
+                <mat-select formControlName="payment_type" placeholder="Medio de Pago" required>
+                  <mat-option *ngFor="let type of payment_types" [value]="type">
+                    {{type}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="f.payment_type.errors?.required">Medio de pago es obligatorio</mat-error>
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field appearance="standard">
+                <mat-label>Monto</mat-label>
+                <input type="number" matInput formControlName="amount" required>
+                <mat-error *ngIf="f.amount.errors?.required">Monto es obligatorio</mat-error>
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field appearance="standard">
+                <mat-label>Fecha de Pago</mat-label>
+                <input matInput [matDatepicker]="dp3" formControlName="payment_date" required>
+                <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+                <mat-datepicker #dp3></mat-datepicker>
+                <mat-error *ngIf="f.payment_date.errors?.required">Fecha de pago es obligatorio</mat-error>
+              </mat-form-field>
+            </div>
+
+            <br>
+            <div>
+              <div>
+                <mat-form-field appearance="outline">
+                  <mat-label>Observaciones</mat-label>
+                  <textarea matInput formControlName="observations" id="text-area-observation"></textarea>
+                </mat-form-field>
+              </div>
+            </div>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button color="primary" (click)="savePayment()"
+              [disabled]="!paymentForm.valid">Guardar</button>
+            <button type="button" mat-raised-button color="warn" (click)="cancel()">Cancelar</button>
+          </mat-card-actions>
+        </mat-card>
+      </form>
+    </section>
+  </div>
+</div>

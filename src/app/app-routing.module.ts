@@ -22,6 +22,7 @@ import { PatientResolveService } from './resolves/patient-resolver.service';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { PageNotFoundComponent } from './_components/page-not-found.component';
 import { MedicalReportComponent } from './medical-report/medical-report.component';
+import { HealthHistoryResolveService } from './resolves/healthHistory-resolver.service';
 
 const routes: Routes = [
   { path: "", component: LoginComponent },
@@ -34,12 +35,12 @@ const routes: Routes = [
   { path: "admin/tipoTratamiento/new", component: TipoTratamientoNewComponent, canActivate: [AuthGuard] },
   { path: "admin/tipoTratamiento/edit/:id", component: TipoTratamientoEditComponent, resolve: { tipoTratamiento: TipoTratamientoResolveService }, canActivate: [AuthGuard] },
   { path: "admin/tipoDiagnostico", component: TipoDiagnosticoListComponent, canActivate: [AuthGuard] },
-  { path: "admin/tipoDiagnostico/new", component: TipoDiagnosticoNewComponent, canActivate: [AuthGuard]},
+  { path: "admin/tipoDiagnostico/new", component: TipoDiagnosticoNewComponent, canActivate: [AuthGuard] },
   { path: "admin/tipoDiagnostico/edit/:id", component: TipoDiagnosticoEditComponent, resolve: { tipoDiagnostico: TipoDiagnosticoResolveService }, canActivate: [AuthGuard] },
   { path: "pacientes", component: PacienteListComponent, canActivate: [AuthGuard] },
   { path: "pacientes/new", component: PacienteNewComponent, canActivate: [AuthGuard] },
   { path: "pacientes/edit/:id", component: PacienteEditComponent, resolve: { paciente: PatientResolveService }, canActivate: [AuthGuard] },
-  { path: "historiaClinica/:id", component: MedicalReportComponent, resolve: { paciente: PatientResolveService }, canActivate: [AuthGuard] },
+  { path: "historiaClinica/:id", component: MedicalReportComponent, resolve: { paciente: PatientResolveService, healthHistory: HealthHistoryResolveService }, canActivate: [AuthGuard] },
   { path: "**", redirectTo: "pageNotFound" }
 ];
 

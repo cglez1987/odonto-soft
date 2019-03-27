@@ -1,0 +1,53 @@
+<div class="div_new">
+  <div class="container">
+    <section fxLayout="row wrap" fxLayoutAlign="center center">
+      <mat-card>
+        <mat-card-title>Detalles del pago</mat-card-title>
+        <mat-card-content>
+          <div class="row row-details">
+            <div class="col-md-1"></div>
+            <div class="col-md-5 label-text">
+              <mat-label><strong>Fecha de Realización: </strong></mat-label>
+            </div>
+            <div class="col-md-5 label-value">
+              {{payment.payment_date | date:'dd-MMMM-yyyy'}}
+            </div>
+            <div class="col-md-1"></div>
+          </div>
+          <div class="row row-details">
+            <div class="col-md-1"></div>
+            <div class="col-md-5 label-text">
+              <mat-label><strong>Monto abonado: </strong></mat-label>
+            </div>
+            <div class="col-md-5 label-value">
+              {{payment.amount | currency: 'PYG'}}
+            </div>
+            <div class="col-md-1"></div>
+          </div>
+          <div class="row row-details">
+            <div class="col-md-1"></div>
+            <div class="col-md-5 label-text">
+              <mat-label><strong>Medio de pago: </strong></mat-label>
+            </div>
+            <div class="col-md-5 label-value">
+              {{payment.payment_type}}
+            </div>
+            <div class="col-md-1"></div>
+          </div>
+          <div class="row row-details" *ngIf="payment.observations">
+            <div class="col-md-1"></div>
+            <div class="col-md-10 label-value">
+              <p-fieldset legend="Observaciones">
+                {{payment.observations}}
+              </p-fieldset>
+            </div>
+            <div class="col-md-1"></div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="warn" (click)="closeDetails()">Cerrar</button>
+        </mat-card-actions>
+      </mat-card>
+    </section>
+  </div>
+</div>

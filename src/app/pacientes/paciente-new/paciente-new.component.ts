@@ -7,6 +7,7 @@ import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-mo
 import { AlertService } from 'src/app/_services/alert.service';
 import { PatientService } from 'src/app/_services/patient.service';
 import { DataService } from 'src/app/_services/data.service';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -28,7 +29,8 @@ export class PacienteNewComponent implements OnInit {
   constructor(private patientService: PatientService,
     private alertService: AlertService,
     private dataService: DataService,
-    private router: Router) {
+    private router: Router,
+    private location: Location) {
     this.genders = this.dataService.gender;
     this.marital_status = this.dataService.marital_status;
   }
@@ -61,6 +63,10 @@ export class PacienteNewComponent implements OnInit {
       }, error => {
         this.alertService.error("Hubo un error al guardar el paciente");
       })
+  }
+
+  cancel() {
+    this.location.back();
   }
 
 }

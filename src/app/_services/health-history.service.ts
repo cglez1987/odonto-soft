@@ -34,6 +34,6 @@ export class HealthHistoryService {
   }
 
   getByPatientId(patientId: string) {
-    return this.http.get<HealthHistory[]>(this.configService.getApiURL() + '/healthHistory/patientId/' + patientId);
+    return this.http.get<HealthHistory>(this.configService.getApiURL() + '/healthHistory/patientId/' + patientId).toPromise();
   }
 }

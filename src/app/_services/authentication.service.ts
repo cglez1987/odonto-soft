@@ -4,7 +4,6 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
 import { Doctor } from '../_models/doctor';
-import { UserService } from './doctor.service';
 import { ConfigurationService } from './configuration.service';
 
 @Injectable({ providedIn: 'root' })

@@ -84,7 +84,8 @@ export class EspecialidadListComponent implements OnInit, AfterViewInit {
   }
   div{
     align-items: center;
-    display: flex;
+    display: block;
+    text-align: center;
   }
 `]
 })

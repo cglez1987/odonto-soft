@@ -8,6 +8,7 @@ import { PatientService } from 'src/app/_services/patient.service';
 import { Patient } from 'src/app/_models/patient';
 import { DataService } from 'src/app/_services/data.service';
 import { AlertService } from 'src/app/_services/alert.service';
+import { Location } from '@angular/common';
 
 
 
@@ -33,7 +34,8 @@ export class PacienteEditComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private dataService: DataService,
-    private alertService: AlertService) {
+    private alertService: AlertService,
+    private location: Location) {
     this.genders = this.dataService.gender;
     this.marital_status = this.dataService.marital_status;
   }
@@ -64,6 +66,10 @@ export class PacienteEditComponent implements OnInit {
         console.log(error);
         this.alertService.error("Hubo un error al guardar el paciente.");
       })
+  }
+
+  cancel(){
+    this.location.back();
   }
 
 }

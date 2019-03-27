@@ -1,1 +1,6 @@
-<div *ngIf="message" [ngClass]="{'alert': message, 'alert-success': message.type === 'success', 'alert-danger': message.type === 'error' }">{{message.text}}</div>
+<!--<div *ngIf="messages" [ngClass]="{'alert': message, 'alert-success': message.type === 'success', 'alert-danger': message.type === 'error' }">{{message.text}}</div>-->
+
+
+<!--<p-messages class="ui-messages" *ngIf="messages?.length > 0" [hideTransitionOptions]="'20ms'" [closable]="false" [value]="messages"></p-messages>-->
+
+<p-toast [style]="{marginTop: '50px'}"></p-toast>

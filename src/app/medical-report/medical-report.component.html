@@ -10,22 +10,22 @@
   </mat-tab>
   <mat-tab label="Odontograma">
     <ng-template matTabContent>
-      <div class="row">
-        <img src="../../assets/odontograma.jpg">
+      <div class="row img-odonto">
+        <img src="../../assets/odontograma.jpg" class="img-odonto">
       </div>
     </ng-template>
   </mat-tab>
   <mat-tab label="Inspección Bucal">
     <ng-template matTabContent>
       <div class="example-large-box mat-elevation-z4">
-        Large content
+        <app-inspeccion-bucal-list [paciente]="patient"></app-inspeccion-bucal-list>
       </div>
     </ng-template>
   </mat-tab>
-  <mat-tab label="Presupuestos">
+  <mat-tab label="Pagos">
     <ng-template matTabContent>
       <div class="example-large-box mat-elevation-z4">
-        Large content
+        <app-payment-list [paciente]="patient"></app-payment-list>
       </div>
     </ng-template>
   </mat-tab>

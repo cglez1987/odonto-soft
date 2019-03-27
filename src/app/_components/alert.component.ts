@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { Message, MessageService } from 'primeng/components/common/api';
 
 import { AlertService } from '../_services/alert.service';
 
@@ -7,23 +8,30 @@ import { AlertService } from '../_services/alert.service';
     selector: 'alert',
     templateUrl: 'alert.component.html',
     styles: [`
-    div{
+    .ui-messages{
         width: 50%;
-        align-items: center;
-        justify-content: center;
-    }
-    `]
+        border: none;
+        margin: 0;
+        border-radius: 15px;
+    }`],
+    providers: [MessageService]
 })
 
 export class AlertComponent implements OnInit, OnDestroy {
     private subscription: Subscription;
-    message: any;
+    messages: Message[];
 
-    constructor(private alertService: AlertService) { }
+    constructor(private alertService: AlertService,
+        private messageService: MessageService) { }
 
     ngOnInit() {
-        this.subscription = this.alertService.getMessage().subscribe(message => { 
-            this.message = message; 
+        this.subscription = this.alertService.getMessage().subscribe(message => {
+            this.messages = [];
+            if (message) {
+                this.messages.push(message);
+                this.messageService.add(message);
+            }
+
         });
     }
 

@@ -11,7 +11,7 @@ import { Patient } from 'src/app/_models/patient';
 export class PacienteDetailsComponent {
 
   constructor(public dialogRef: MatDialogRef<PacienteDetailsComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Patient) { }
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   close(): void {
     this.dialogRef.close();

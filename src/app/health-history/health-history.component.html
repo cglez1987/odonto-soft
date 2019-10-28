@@ -168,7 +168,7 @@
           </div>
           <div class="col-md-5">
             <mat-label formArrayName="elementos_limpieza_bucal"
-              *ngFor="let order of healthHistoryForm.controls.elementos_limpieza_bucal.controls; let i = index">
+              *ngFor="let order of healthHistoryForm.get('elementos_limpieza_bucal')['controls']; let i = index">
               <div>
                 <mat-checkbox [formControlName]="i">{{element_limpieza_bucal[i]}}</mat-checkbox>
               </div>

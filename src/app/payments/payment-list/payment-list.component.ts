@@ -21,7 +21,7 @@ export class PaymentListComponent implements OnInit {
   payment: Payment;
 
   constructor(private paymmentService: PaymentService,
-    private configurationService: ConfigurationService,
+    public configurationService: ConfigurationService,
     public dialog: MatDialog) {
     this.configurationService.action_payments = "list";
     this.displayedColumns = ["fecha", "monto", "tipoPago", "acciones"];

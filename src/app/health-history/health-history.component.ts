@@ -49,12 +49,12 @@ export class HealthHistoryComponent implements OnInit {
     this.element_limpieza_bucal = this.dataService.elementos_limpieza_bucal;
 
     //const controls = this.element_limpieza_bucal.map(c => new FormControl(false));
-    let controls = [];
+    let controlsLimpiezaBucal = [];
     this.element_limpieza_bucal.forEach(element => {
       if (this.healthHistory.elementos_limpieza_bucal && this.healthHistory.elementos_limpieza_bucal.includes(element)) {
-        controls.push(new FormControl(true));
+        controlsLimpiezaBucal.push(new FormControl(true));
       } else {
-        controls.push(new FormControl(false));
+        controlsLimpiezaBucal.push(new FormControl(false));
       }
     })
 
@@ -76,7 +76,7 @@ export class HealthHistoryComponent implements OnInit {
       cant_cepillados: [this.healthHistory.cant_cepillados],
       tolera_anestecia_odonto: [this.healthHistory.tolera_anestecia_odonto],
       observaciones: [this.healthHistory.observaciones],
-      elementos_limpieza_bucal: new FormArray(controls)
+      elementos_limpieza_bucal: new FormArray(controlsLimpiezaBucal)
     })
 
   }

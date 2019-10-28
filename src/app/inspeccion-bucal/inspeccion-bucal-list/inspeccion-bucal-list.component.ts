@@ -21,7 +21,7 @@ export class InspeccionBucalListComponent implements OnInit {
 
 
   constructor(private inspeccionBucalService: InspeccionBucalService,
-    private configurationService: ConfigurationService,
+    public configurationService: ConfigurationService,
     public dialog: MatDialog) {
     this.displayedColumns = ["fecha", "totalCosto", "acciones"];
 

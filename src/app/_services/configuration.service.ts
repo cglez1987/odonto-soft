@@ -5,14 +5,15 @@ import { Injectable } from '@angular/core';
 })
 export class ConfigurationService {
 
-  apiUrl: string = 'http://localhost:8080';
+  //apiUrl: string = 'http://odontosoft-elb-397100247.us-east-1.elb.amazonaws.com:8080';
+  apiUrl: string = 'https://odontosoft-elb-397100247.us-east-1.elb.amazonaws.com';
   action_inspeccion_bucal: string
   action_payments: string
 
   constructor() { }
 
   getApiURL() {
-    return this.apiUrl; 
+    return this.apiUrl;
   }
 
 }

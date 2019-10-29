@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { AuthenticationService } from '../_services/authentication.service';
 import { AlertService } from '../_services/alert.service';
+import { AmazonAdsService } from '../_services/amazon-ads.service';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,8 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private amazonAdsService: AmazonAdsService
   ) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
@@ -38,10 +40,15 @@ export class LoginComponent implements OnInit {
 
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.getAllAmazonAds();
   }
 
   // convenience getter for easy access to form fields
   get f() { return this.loginForm.controls; }
+
+  getAllAmazonAds() {
+    console.log('Recibido desde Amazon: ' + this.amazonAdsService.getAllAmazonAds())
+  }
 
   onSubmit() {
     this.submitted = true;

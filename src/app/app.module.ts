@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { SafePipeModule } from 'safe-pipe';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -37,11 +38,12 @@ import { ConfigurationService } from './_services/configuration.service';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { ToastModule } from 'primeng/toast';
-import {FieldsetModule} from 'primeng/fieldset';
+import { FieldsetModule } from 'primeng/fieldset';
 import { InspeccionBucalDetailsComponent } from './inspeccion-bucal/inspeccion-bucal-details/inspeccion-bucal-details.component';
 import { PaymentDetailsComponent } from './payments/payment-details/payment-details.component';
 import { PaymentListComponent, DialogConfirmDeletePayment } from './payments/payment-list/payment-list.component';
 import { PaymentNewComponent } from './payments/payment-new/payment-new.component';
+import { SafePipe } from './_helpers/safe';
 
 
 @NgModule({
@@ -79,7 +81,8 @@ import { PaymentNewComponent } from './payments/payment-new/payment-new.componen
     InspeccionBucalDetailsComponent,
     PaymentDetailsComponent,
     PaymentListComponent,
-    PaymentNewComponent
+    PaymentNewComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,
@@ -93,6 +96,7 @@ import { PaymentNewComponent } from './payments/payment-new/payment-new.componen
     MessageModule,
     ToastModule,
     FieldsetModule,
+    //SafePipeModule,
     FlatpickrModule.forRoot(),
     CalendarModule.forRoot({
       provide: DateAdapter,

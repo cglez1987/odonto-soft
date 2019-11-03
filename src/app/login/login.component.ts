@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
   returnUrl: string;
+  ads: string[] = new Array;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -40,14 +41,19 @@ export class LoginComponent implements OnInit {
 
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-    this.getAllAmazonAds();
+    this.getAllAmazonAds()
   }
 
   // convenience getter for easy access to form fields
   get f() { return this.loginForm.controls; }
 
   getAllAmazonAds() {
-    console.log('Recibido desde Amazon: ' + this.amazonAdsService.getAllAmazonAds())
+    this.amazonAdsService.getAllAmazonAds().subscribe(data => {
+      data['amazonAds'].forEach(ad => {
+        let src = JSON.parse(ad);
+        this.ads.push(src['src']);
+      })
+    });
   }
 
   onSubmit() {

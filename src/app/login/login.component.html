@@ -32,18 +32,7 @@
 </div>
 
 <div>
-  <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0"
-    src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ss&ref=as_ss_li_til&ad_type=product_link&tracking_id=megasearch-20&language=en_US&marketplace=amazon&region=US&placement=B07767WNWT&asins=B07767WNWT&linkId=fd462605a3e2fcfa8c548dc582ede4a4&show_border=true&link_opens_in_new_window=true"></iframe>
-  
-    <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0"
-    src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ss&ref=as_ss_li_til&ad_type=product_link&tracking_id=megasearch-20&language=en_US&marketplace=amazon&region=US&placement=B07258W17T&asins=B07258W17T&linkId=df27da881a6bb9c0982acbe4e1844ce2&show_border=true&link_opens_in_new_window=true"></iframe>
-
-  <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0"
-    src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ss&ref=as_ss_li_til&ad_type=product_link&tracking_id=megasearch-20&language=en_US&marketplace=amazon&region=US&placement=B07N6PS35Q&asins=B07N6PS35Q&linkId=afe0567e6f2d06537663d1a3c0ffa9ef&show_border=true&link_opens_in_new_window=true"></iframe>
-
-  <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0"
-    src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ss&ref=as_ss_li_til&ad_type=product_link&tracking_id=megasearch-20&language=en_US&marketplace=amazon&region=US&placement=B07D585KDH&asins=B07D585KDH&linkId=2c1eea9e82eaba68665d19387a012171&show_border=true&link_opens_in_new_window=true"></iframe>
-
-  <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0"
-    src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ss&ref=as_ss_li_til&ad_type=product_link&tracking_id=megasearch-20&language=en_US&marketplace=amazon&region=US&placement=B01FHMPGCM&asins=B01FHMPGCM&linkId=9bedce66367ba8189daa97927984f433&show_border=true&link_opens_in_new_window=true"></iframe>
+  <iframe *ngFor="let ad of ads; let i = index" style="width:120px;height:240px;" marginwidth="0" marginheight="0"
+    scrolling="no" frameborder="0" [src]="ad | safe">
+  </iframe>
 </div>
